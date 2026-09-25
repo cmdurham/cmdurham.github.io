@@ -1,0 +1,549 @@
+/* ========================================================================
+   cmdurham.com — site styles
+   Foundation: "Wake Up Samurai" (Cyberpunk 2077 Obsidian theme), with the
+   oxblood/red role recast in amber-gold. Night City HUD: charcoal gradient,
+   cyan headers, green active glow, gold labels, data-shard panels.
+   ======================================================================== */
+
+:root {
+  /* type — theme stacks, web-available fallbacks first */
+  --font-display: 'Teko', 'Rajdhani', system-ui, sans-serif;
+  --font-ui: 'Rajdhani', 'Electrolize', system-ui, sans-serif;
+  --font-text: 'Roboto Condensed', 'Rajdhani', 'Inter', system-ui, sans-serif;
+
+  /* surfaces (theme charcoals) */
+  --bg: #0b0f14;
+  --panel: rgba(17, 26, 36, 0.92);
+  --panel-solid: #131922;
+  --raised: #1d2531;
+
+  /* amber-gold — replaces the theme's red role */
+  --gold: #f2a81d;
+  --gold-bright: #ffc95c;
+  --gold-dim: #c98f1e;
+
+  /* supporting accents, straight from the theme */
+  --cyan: #6ec6ff;
+  --cyan-hover: #9ad9ff;
+  --green: #3eea9a;
+  --tag-gold: #f6da63;
+
+  /* text — warm-tinted but bright, for real contrast on charcoal */
+  --text: #e9d8a9;
+  --text-muted: #c2ab77;
+  --text-pale: #cfe3ee; /* shard-panel body color, from theme blockquotes */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Animated amber→charcoal gradient (theme's oxblood layer, recast) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    #3a2a08 0%,   /* deep amber-brown */
+    #1d1509 38%,  /* dark bronze */
+    #0b0f14 100%  /* blue-black charcoal */
+  );
+  background-size: 400% 400%;
+  animation: cpGradientShift 60s ease infinite;
+  filter: saturate(120%) brightness(104%) contrast(108%);
+}
+
+@keyframes cpGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Amber-tinted vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    65% 65% at 50% 45%,
+    rgba(0, 0, 0, 0) 58%,
+    rgba(58, 42, 8, 0.26) 85%,
+    rgba(0, 0, 0, 0.32) 100%
+  );
+}
+
+main, .site-header, .site-footer { position: relative; z-index: 1; }
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Links — cyan with glow, per theme */
+a { color: var(--cyan); text-decoration: none; }
+
+p a {
+  border-bottom: 1px solid rgba(110, 198, 255, 0.45);
+  transition: color 0.2s ease, border-color 0.2s ease, text-shadow 0.2s ease;
+}
+
+p a:hover {
+  color: var(--cyan-hover);
+  border-bottom-color: rgba(110, 198, 255, 0.85);
+  text-shadow: 0 0 8px rgba(110, 198, 255, 0.8);
+}
+
+/* ---------- header — HUD titlebar ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11, 15, 20, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(242, 168, 29, 0.35);
+  box-shadow: 0 1px 12px rgba(242, 168, 29, 0.12);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.wordmark-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  background: var(--gold);
+  color: #1a1206;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 0 10px rgba(242, 168, 29, 0.45);
+}
+
+.dim { color: var(--text-muted); }
+
+.site-nav { display: flex; align-items: stretch; gap: 6px; }
+
+.site-nav a {
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-left: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+  background: rgba(242, 168, 29, 0.08);
+  border-left-color: rgba(242, 168, 29, 0.5);
+}
+
+.site-nav a.nav-active {
+  color: var(--green);
+  background: rgba(62, 234, 154, 0.10);
+  border-left-color: rgba(62, 234, 154, 0.6);
+  box-shadow: inset 0 0 0 1px rgba(62, 234, 154, 0.25);
+  text-shadow: 0 0 8px rgba(62, 234, 154, 0.5);
+}
+
+/* ---------- micro-label ("//" netrunner prefix, gold) ---------- */
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tag-gold);
+  text-shadow: 0 0 8px rgba(246, 218, 99, 0.45);
+  margin-bottom: 18px;
+}
+
+.badge::before {
+  content: '// ';
+  color: var(--gold-dim);
+  text-shadow: none;
+}
+
+/* ---------- tags — gold pills, sharp ---------- */
+
+.tag {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tag-gold);
+  background: rgba(246, 218, 99, 0.14);
+  border: 1px solid rgba(246, 218, 99, 0.6);
+  padding: 2px 10px;
+  border-radius: 2px;
+}
+
+.tag-green {
+  color: var(--green);
+  background: rgba(62, 234, 154, 0.10);
+  border-color: rgba(62, 234, 154, 0.55);
+  text-shadow: 0 0 8px rgba(62, 234, 154, 0.4);
+}
+
+/* ---------- display headings — H1 chrome: cyan, tick, heavy rule ---------- */
+
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.02;
+  color: var(--cyan);
+  text-shadow: 0 0 14px rgba(110, 198, 255, 0.35);
+  border-bottom: 2px solid rgba(110, 198, 255, 0.55);
+  padding-bottom: 0.22em;
+  margin-bottom: 26px;
+}
+
+.h-display::before {
+  content: '';
+  display: inline-block;
+  width: 0.13em;
+  height: 0.62em;
+  margin-right: 0.22em;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(242, 168, 29, 0.6);
+}
+
+.accent-gold {
+  color: var(--gold-bright);
+  text-shadow: 0 0 14px rgba(242, 168, 29, 0.55);
+}
+
+/* ---------- buttons — amber interactive accent ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 10px 26px;
+  border-radius: 2px;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #1a1206;
+  box-shadow: 0 0 14px rgba(242, 168, 29, 0.35);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+.btn-primary:hover {
+  background: var(--gold-bright);
+  box-shadow: 0 0 22px rgba(242, 168, 29, 0.55);
+}
+
+.btn-ghost {
+  color: var(--cyan);
+  background: rgba(110, 198, 255, 0.06);
+  border: 1px solid rgba(110, 198, 255, 0.45);
+}
+
+.btn-ghost:hover {
+  color: var(--cyan-hover);
+  border-color: rgba(110, 198, 255, 0.85);
+  box-shadow: 0 0 14px rgba(110, 198, 255, 0.3);
+  text-shadow: 0 0 8px rgba(110, 198, 255, 0.8);
+}
+
+/* ---------- hero (landing) ---------- */
+
+.hero { padding: 92px 0 64px; }
+
+.hero h1 {
+  font-size: clamp(52px, 8vw, 92px);
+  max-width: 860px;
+}
+
+.hero-sub {
+  max-width: 600px;
+  color: var(--text);
+  font-size: 19px;
+  margin-bottom: 34px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ---------- data-shard panels (shared card chrome) ---------- */
+
+.feature-card, .card, .soon-inner {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid rgba(110, 198, 255, 0.28);
+  border-radius: 2px;
+}
+
+/* HUD corner bracket, bottom-right */
+.feature-card::after, .card::after {
+  content: '';
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(110, 198, 255, 0.55);
+  border-bottom: 2px solid rgba(110, 198, 255, 0.55);
+  pointer-events: none;
+}
+
+/* ---------- feature card (landing → arcade) ---------- */
+
+.feature { padding: 26px 0 70px; }
+
+.feature-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  overflow: hidden;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(110, 198, 255, 0.6);
+  box-shadow: 0 0 24px rgba(110, 198, 255, 0.15), 0 14px 44px rgba(0, 0, 0, 0.5);
+}
+
+.feature-art {
+  align-self: stretch;
+  display: flex;
+  background: radial-gradient(ellipse at 30% 20%, rgba(242, 168, 29, 0.10), transparent 60%);
+  border-right: 1px solid rgba(110, 198, 255, 0.2);
+  line-height: 0;
+}
+
+.feature-art svg { width: 100%; height: 100%; min-height: 240px; }
+
+.feature-body { padding: 38px 42px; }
+
+.feature-body h2 {
+  font-family: var(--font-ui);
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cyan);
+  text-shadow: 0 0 12px rgba(110, 198, 255, 0.3);
+  margin: 14px 0 4px;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(90deg, rgba(110, 198, 255, 0.55), rgba(110, 198, 255, 0) 65%) 1;
+}
+
+.feature-body p {
+  color: var(--text-pale);
+  font-size: 16.5px;
+  margin: 10px 0 26px;
+}
+
+/* ---------- soon strip (landing) ---------- */
+
+.soon-strip { padding: 0 0 90px; }
+
+.soon-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: rgba(17, 26, 36, 0.6);
+  border: 1px dashed rgba(246, 218, 99, 0.4);
+  padding: 22px 28px;
+}
+
+.soon-inner h3 {
+  font-family: var(--font-ui);
+  font-size: 19px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--green);
+  text-shadow: 0 0 10px rgba(62, 234, 154, 0.25);
+  margin-bottom: 2px;
+}
+
+.soon-inner p { color: var(--text); font-size: 16px; }
+
+/* ---------- page header (arcade) ---------- */
+
+.page-head { padding: 72px 0 40px; }
+
+.page-head h1 { font-size: clamp(48px, 7vw, 80px); }
+
+.page-head p {
+  max-width: 640px;
+  color: var(--text);
+  font-size: 18px;
+}
+
+/* ---------- game cards ---------- */
+
+.games { padding: 8px 0 90px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  border-color: rgba(110, 198, 255, 0.6);
+  box-shadow: 0 0 20px rgba(110, 198, 255, 0.14), 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.card-art { display: block; line-height: 0; border-bottom: 1px solid rgba(110, 198, 255, 0.2); }
+.card-art svg { width: 100%; height: auto; }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 24px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--green);
+  text-shadow: 0 0 10px rgba(62, 234, 154, 0.25);
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--text-pale);
+  font-size: 15.5px;
+  flex: 1;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.card-note {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.card-soon { opacity: 0.78; }
+.card-soon::after { display: none; }
+.card-soon:hover {
+  border-color: rgba(110, 198, 255, 0.28);
+  box-shadow: none;
+}
+
+/* ---------- footer — HUD divider fading right ---------- */
+
+.site-footer {
+  border-top: 1px solid;
+  border-image: linear-gradient(90deg, rgba(242, 168, 29, 0.7), rgba(242, 168, 29, 0.15) 60%, transparent) 1;
+  padding: 24px 0 30px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 720px) {
+  .hero { padding: 64px 0 48px; }
+  .feature-card { grid-template-columns: 1fr; }
+  .feature-art { border-right: none; border-bottom: 1px solid rgba(110, 198, 255, 0.2); }
+  .feature-art svg { min-height: 180px; }
+  .feature-body { padding: 26px 24px 30px; }
+  .page-head { padding: 54px 0 32px; }
+  .card-actions { flex-wrap: wrap; }
+}
