@@ -14,7 +14,7 @@ grow into other creative projects.
 | `exodus/index.html` | EXODUS: The Long Drift — copied from `~/Dev/2077-theme/exodus.html` |
 
 Extinction Fighters is linked at its own GitHub Pages URL
-(https://cmdurham.github.io/extinction-fighters/) rather than bundled here.
+(/extinction-fighters/) rather than bundled here.
 
 **Updating EXODUS:** after rebuilding the game (`./build.sh` in `~/Dev/2077-theme`),
 re-copy it into the site:
