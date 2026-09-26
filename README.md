@@ -13,8 +13,8 @@ grow into other creative projects.
 | `CNAME` | Tells GitHub Pages to serve this site at cmdurham.com |
 | `exodus/index.html` | EXODUS: The Long Drift — copied from `~/Dev/2077-theme/exodus.html` |
 
-Extinction Fighters is linked at its own GitHub Pages URL
-(/extinction-fighters/) rather than bundled here.
+Extinction Fighters lives in its own repo (`cmdurham/extinction-fighters`); GitHub Pages
+serves it at `/extinction-fighters/` under this domain, so it's linked rather than bundled.
 
 **Updating EXODUS:** after rebuilding the game (`./build.sh` in `~/Dev/2077-theme`),
 re-copy it into the site:
