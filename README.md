@@ -13,6 +13,9 @@ grow into other creative projects.
 | `CNAME` | Tells GitHub Pages to serve this site at cmdurham.com |
 | `exodus/index.html` | EXODUS: The Long Drift — copied from `~/Dev/2077-theme/exodus.html` |
 
+Bass Technique lives in its own repo (`cmdurham/bass-technique`) and is served at
+`/bass-technique/`; it's linked from the nav and the landing page.
+
 Extinction Fighters lives in its own repo (`cmdurham/extinction-fighters`); GitHub Pages
 serves it at `/extinction-fighters/` under this domain, so it's linked rather than bundled.
 
