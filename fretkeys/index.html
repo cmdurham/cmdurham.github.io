@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fretkeys — cmdurham.com</title>
+  <meta name="description" content="Fretkeys: a keyboard-first tab and notation editor for bass and guitar, for writing exercises and transcribing songs by ear. Free Mac download.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600&family=Rajdhani:wght@500;600;700&family=Roboto+Condensed:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%23f2a81d'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='sans-serif' font-weight='bold' fill='%231a1206'>CD</text></svg>">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="/">
+        <span class="wordmark-mark">CD</span>
+        <span class="wordmark-text">cmdurham<span class="dim">.com</span></span>
+      </a>
+      <nav class="site-nav">
+        <a href="/arcade/">Arcade</a>
+        <a href="/bass-technique/">Bass</a>
+        <a href="/fretkeys/" class="nav-active">Fretkeys</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-head">
+      <div class="wrap">
+        <p class="badge">Fretkeys</p>
+        <h1 class="h-display">Tab at the speed <span class="accent-gold">you hear it</span>.</h1>
+        <p>
+          A tab and notation editor for bass and guitar that you drive entirely from the
+          keyboard. One key press per note: a fret key for the fret, held with Shift, Ctrl
+          or Option to pick the string. I built it for writing exercises and for
+          transcribing songs by ear.
+        </p>
+      </div>
+    </section>
+
+    <section class="games">
+      <div class="wrap">
+
+        <div class="download-panel">
+          <div>
+            <div class="card-tags">
+              <span class="tag tag-green">Version 0.1.0</span>
+              <span class="tag">macOS · Apple silicon</span>
+              <span class="tag">6.8 MB</span>
+            </div>
+            <h2>Download for Mac</h2>
+            <p>
+              Built October 18, 2026. Runs on Macs with an M-series chip; Intel Macs
+              aren't supported yet. Windows and Linux builds exist but haven't been
+              tested on real hardware, so they aren't posted here.
+            </p>
+          </div>
+          <div class="download-actions">
+            <a class="btn btn-primary" href="/fretkeys/Fretkeys_0.1.0_aarch64.dmg" download>Download .dmg</a>
+            <span class="card-note">Free · no account</span>
+          </div>
+        </div>
+
+        <div class="card-grid">
+
+          <article class="card">
+            <div class="card-body">
+              <h3>What it does</h3>
+              <ul class="plain-list">
+                <li><strong>Notation and tab together</strong>, with playback, a metronome and a count-in.</li>
+                <li><strong>Exercises:</strong> repeats, endings, bar-repeat signs, sections, and fretting and plucking fingering.</li>
+                <li><strong>Transcribing:</strong> load a song, loop a section, and slow it to 50% without changing the pitch.</li>
+                <li><strong>Exports:</strong> PDF, Guitar Pro (.gp) and plain-text tab.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <h3>Installing</h3>
+              <ol class="plain-list">
+                <li>Open the <code>.dmg</code> and drag <strong>Fretkeys</strong> onto <strong>Applications</strong>.</li>
+                <li>Open Fretkeys. The app isn't signed by Apple yet, so macOS will refuse the first time.</li>
+                <li>Go to <strong>System Settings › Privacy &amp; Security</strong>, scroll down, and click <strong>Open Anyway</strong>. You only do this once.</li>
+              </ol>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <h3>The keys</h3>
+              <p>
+                <code>`</code> is the open string, <code>1</code>–<code>9</code> are frets 1–9,
+                and <code>0</code> <code>-</code> <code>=</code> are 10–12. Caps Lock shifts
+                the same keys up to frets 13–24. On bass, no modifier is the E string, Shift is A,
+                Ctrl is D and Option is G.
+              </p>
+              <p class="card-foot">
+                The full guide is built in: press <strong>Cmd+K</strong> and choose <strong>Help</strong>.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="checksum">SHA-256 · <code>b3ec9327b487be860eaab9e7ac090dfc537e878d1e1009c2d072fec4c9fc3d8b</code></p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> Chris Durham</span>
+      <span class="dim">Made with the kids · Built with AI</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

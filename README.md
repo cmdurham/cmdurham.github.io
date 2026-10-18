@@ -12,9 +12,19 @@ grow into other creative projects.
 | `styles.css` | All site styling (shared by landing + arcade) |
 | `CNAME` | Tells GitHub Pages to serve this site at cmdurham.com |
 | `exodus/index.html` | EXODUS: The Long Drift — copied from `~/Dev/2077-theme/exodus.html` |
+| `fretkeys/` | Fretkeys download page and the Mac `.dmg` |
 
 Bass Technique lives in its own repo (`cmdurham/bass-technique`) and is served at
 `/bass-technique/`; it's linked from the nav and the landing page.
+
+Fretkeys (`fretkeys/`) is a download page for the Mac build of the app, which lives in
+the private `cmdurham/fretkeys` repo. The `.dmg` is committed alongside the page.
+
+**Updating Fretkeys:** build the disk image in `~/Dev/fretkeys`
+(`npm run tauri build -- --bundles dmg`), copy
+`src-tauri/target/release/bundle/dmg/Fretkeys_<version>_aarch64.dmg` into `fretkeys/`,
+delete the old one, and update the version, build date, size, download link and SHA-256
+(`shasum -a 256 <file>`) in `fretkeys/index.html`.
 
 Extinction Fighters lives in its own repo (`cmdurham/extinction-fighters`); GitHub Pages
 serves it at `/extinction-fighters/` under this domain, so it's linked rather than bundled.
