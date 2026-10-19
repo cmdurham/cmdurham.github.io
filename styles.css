@@ -587,6 +587,8 @@ code {
 }
 
 .checksum code { color: var(--text-muted); background: none; border: none; padding: 0; }
+.checksum + .checksum { margin-top: 6px; }
+.card-body .plain-list + p { margin-top: 16px; }
 
 /* ---------- footer — HUD divider fading right ---------- */
 
